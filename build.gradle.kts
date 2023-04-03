@@ -1,0 +1,21 @@
+plugins {
+    id("java")
+}
+
+group = "me.WesleyH"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("org.apache.httpcomponents:httpclient:4.5.14")
+    implementation("org.json:json:20220320")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
