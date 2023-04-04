@@ -3,7 +3,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,9 +10,11 @@ import java.util.Scanner;
 
 public class Game {
     private int level;
+    private GameState gameState;
 
     public Game() throws IOException {
-        this.level = 0;
+        this.level = 1;
+        gameState = GameState.ONGOING;
 
         System.out.println("WW2BAM has been started!");
 
@@ -30,7 +31,7 @@ public class Game {
 
     private void init() throws IOException {
 
-        while (level < 10 || level == -1){
+        while (gameState == GameState.ONGOING){
 
             ArrayList<String> question = getQuestion(level);
             System.out.println(question.get(0));
@@ -45,18 +46,20 @@ public class Game {
             String res = scan.nextLine();
             if (res.equals(question.get(1))){
                 level++;
+                System.out.println("Your level: " + level);
                 System.out.println("Correct! Next question");
             }else{
-                level = -1;
+                gameState = GameState.LOST;
                 System.out.println("Incorrect!");
             }
 
+            if (level > 10){
+                gameState = GameState.WON;
+            }
+
         }
-        if (level > 10){
-            System.out.println("You win!");
-        }else {
-            System.out.println("You lost!");
-        }
+        System.out.println("Your level: " + level);
+        System.out.println(gameState.toString());
 
     }
 
@@ -80,7 +83,19 @@ public class Game {
         }
         in.close();
 
-        return new JSONObject(content.toString());
+        System.out.println(content);
+        String plainString = content.toString()
+                .replaceAll("&lt;", "<")
+                .replaceAll("&gt;", ">")
+                .replaceAll("&amp;", "&")
+                .replaceAll("&nbsp;", " ")
+                .replaceAll("&quot;", "\"")
+                .replaceAll("&#039;", "'")
+                .replaceAll("&oacute;", "ó");
+        System.out.println(plainString);
+
+
+        return new JSONObject(plainString);
     }
 
     /**

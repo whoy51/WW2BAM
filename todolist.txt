@@ -1,0 +1,6 @@
+- GUI
+- Standard Draw interface
+- question randomization
+- money meter
+- leaderboard
+- Fix escape characters (string replacement algorithm)
