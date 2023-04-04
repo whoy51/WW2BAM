@@ -3,4 +3,4 @@
 - question randomization
 - money meter
 - leaderboard
-- Fix escape characters (string replacement algorithm)
+- add character replacement as needed
