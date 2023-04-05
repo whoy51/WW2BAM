@@ -8,12 +8,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Game {
     private int level;
     private GameState gameState;
     private GameType gameType;
+    private boolean gameRunning = true;
     volatile boolean awaiting = true;
     String answer;
 
@@ -27,21 +27,13 @@ public class Game {
         init();
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     /**
      * All game logic
      * @throws IOException check getJSON() documentation
      */
     private void init() throws IOException {
 
-        while (true) {
+        while (gameRunning) {
             gameState = GameState.WAITING;
             awaiting = true;
             while (gameState == GameState.WAITING){
@@ -49,6 +41,11 @@ public class Game {
                 while (awaiting){
                     Thread.onSpinWait();
                 }
+            }
+            if (!gameRunning){
+                System.out.println("Game has ended!");
+                System.exit(0);
+                break;
             }
             while (gameState == GameState.ONGOING) {
                 System.out.println("Fetching questions... (if this takes longer than 5 seconds, restart)");
@@ -66,13 +63,10 @@ public class Game {
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                 ArrayList<String> question = getQuestion(level);
-                System.out.println(question);
                 String correct = question.get(1);
                 for (int i = 0; i < 100; i++) {
-                    System.out.println((int) (1 + Math.random() * 3));
                     question.add((int) Math.floor(Math.random() * 4) + 1, question.remove(1));
                 }
-                System.out.println(question);
                 frame.dispose();
                 awaiting = true;
                 promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
@@ -80,7 +74,6 @@ public class Game {
                 while (awaiting) {
                     Thread.onSpinWait();
                 }
-                System.out.println(answer);
                 awaiting = true;
                 if (answer.equals(correct)) {
                     level++;
@@ -262,6 +255,7 @@ public class Game {
         JLabel label2 = new JLabel("Please select a game");
         JButton button = new JButton("Classic");
         JButton button2 = new JButton("Infinite");
+        JButton button3 = new JButton("Exit");
         button.addActionListener(e -> {
             frame.dispose();
             gameState = GameState.ONGOING;
@@ -273,10 +267,17 @@ public class Game {
             gameState = GameState.ONGOING;
             awaiting = false;
         });
+        button3.addActionListener(e -> {
+            frame.dispose();
+            gameState = GameState.ONGOING;
+            awaiting = false;
+            gameRunning = false;
+        });
         panel.add(label);
         panel.add(label2);
         panel.add(button);
         panel.add(button2);
+        panel.add(button3);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);

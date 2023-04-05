@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Add infinite mode">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Fixed correct answers causing game to end (lol)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todolist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todolist.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +227,7 @@
       <updated>1680529413384</updated>
       <workItem from="1680529414464" duration="3054000" />
       <workItem from="1680612279673" duration="8085000" />
-      <workItem from="1680643078747" duration="12678000" />
+      <workItem from="1680643078747" duration="13349000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -305,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680715058720</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed correct answers causing game to end (lol)">
+      <created>1680715509554</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680715509554</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +331,7 @@
     <MESSAGE value="Add home screen" />
     <MESSAGE value="Fix bugs w/ home screen" />
     <MESSAGE value="Add infinite mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add infinite mode" />
+    <MESSAGE value="Fixed correct answers causing game to end (lol)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed correct answers causing game to end (lol)" />
   </component>
 </project>
