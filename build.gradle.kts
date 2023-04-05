@@ -2,6 +2,14 @@ plugins {
     id("java")
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "WW2BAM"
+    }
+}
+
+
+
 group = "me.WesleyH"
 version = "1.0-SNAPSHOT"
 
