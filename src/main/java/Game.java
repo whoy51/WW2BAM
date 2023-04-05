@@ -1,5 +1,7 @@
 import org.json.JSONObject;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,12 +13,14 @@ import java.util.Scanner;
 public class Game {
     private int level;
     private GameState gameState;
+    boolean awaiting = true;
 
     public Game() throws IOException {
         this.level = 1;
         gameState = GameState.ONGOING;
 
         System.out.println("WW2BAM has been started!");
+
 
         init();
     }
@@ -41,21 +45,27 @@ public class Game {
             System.out.println(question.get(3));
             System.out.println(question.get(4));
 
-            Scanner scan = new Scanner(System.in);
-            System.out.print("Response: ");
-            String res = scan.nextLine();
-            if (res.equals(question.get(1))){
-                level++;
-                System.out.println("Your level: " + level);
-                System.out.println("Correct! Next question");
-            }else{
-                gameState = GameState.LOST;
-                System.out.println("Incorrect!");
+            awaiting = true;
+            while (awaiting){
+                promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
             }
 
-            if (level > 10){
-                gameState = GameState.WON;
-            }
+
+//            Scanner scan = new Scanner(System.in);
+//            System.out.print("Response: ");
+//            String res = scan.nextLine();
+//            if (res.equals(question.get(1))){
+//                level++;
+//                System.out.println("Your level: " + level);
+//                System.out.println("Correct! Next question");
+//            }else{
+//                gameState = GameState.LOST;
+//                System.out.println("Incorrect!");
+//            }
+//
+//            if (level > 10){
+//                gameState = GameState.WON;
+//            }
 
         }
         System.out.println("Your level: " + level);
@@ -89,7 +99,7 @@ public class Game {
                 .replaceAll("&gt;", ">")
                 .replaceAll("&amp;", "&")
                 .replaceAll("&nbsp;", " ")
-                .replaceAll("&quot;", "\"")
+                .replaceAll("&quot;", "\\\"")
                 .replaceAll("&#039;", "'")
                 .replaceAll("&oacute;", "ó");
         System.out.println(plainString);
@@ -111,5 +121,43 @@ public class Game {
         question.add(object.getJSONArray("results").getJSONObject(0).getJSONArray("incorrect_answers").get(2).toString());
         return question;
 
+    }
+
+    public void promptUser(String question, String answer1, String answer2, String answer3, String answer4){
+        JFrame frame = new JFrame();
+        frame.setTitle("Question " + level);
+        frame.setSize(450, 75);
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JLabel label = new JLabel(question);
+        JButton button1 = new JButton(answer1);
+        JButton button2 = new JButton(answer2);
+        JButton button3 = new JButton(answer3);
+        JButton button4 = new JButton(answer4);
+        button1.addActionListener(e -> {
+            frame.dispose();
+            awaiting = false;
+        });
+        button2.addActionListener(e -> {
+            frame.dispose();
+            awaiting = false;
+        });
+        button3.addActionListener(e -> {
+            frame.dispose();
+            awaiting = false;
+        });
+        button4.addActionListener(e -> {
+            frame.dispose();
+            awaiting = false;
+        });
+        panel.add(label);
+        panel.add(button1);
+        panel.add(button2);
+        panel.add(button3);
+        panel.add(button4);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 }
