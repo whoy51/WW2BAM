@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Fixed correct answers causing game to end (lol)">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Adding way to exit game w/o an error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todolist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todolist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WW2BAM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WW2BAM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +227,7 @@
       <updated>1680529413384</updated>
       <workItem from="1680529414464" duration="3054000" />
       <workItem from="1680612279673" duration="8085000" />
-      <workItem from="1680643078747" duration="13349000" />
+      <workItem from="1680643078747" duration="14419000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -313,7 +313,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680715509554</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Won't be using StdDraw">
+      <created>1680716314882</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680716314882</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Adding way to exit game w/o an error">
+      <created>1680716327506</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680716327506</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +346,8 @@
     <MESSAGE value="Fix bugs w/ home screen" />
     <MESSAGE value="Add infinite mode" />
     <MESSAGE value="Fixed correct answers causing game to end (lol)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed correct answers causing game to end (lol)" />
+    <MESSAGE value="Won't be using StdDraw" />
+    <MESSAGE value="Adding way to exit game w/o an error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding way to exit game w/o an error" />
   </component>
 </project>

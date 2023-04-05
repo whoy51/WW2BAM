@@ -1,5 +1,4 @@
 import org.json.JSONObject;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -23,7 +22,6 @@ public class Game {
 
         System.out.println("WW2BAM has been started!");
 
-
         init();
     }
 
@@ -44,7 +42,6 @@ public class Game {
             }
             if (!gameRunning){
                 System.out.println("Game has ended!");
-                System.exit(0);
                 break;
             }
             while (gameState == GameState.ONGOING) {
