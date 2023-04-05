@@ -1,4 +1,3 @@
-- Standard Draw interface
 - money meter
 - leaderboard
 - redo character replacement
