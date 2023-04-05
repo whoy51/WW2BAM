@@ -32,6 +32,7 @@ public class Game {
     private void init() throws IOException {
 
         while (gameRunning) {
+            level = 1;
             gameState = GameState.WAITING;
             awaiting = true;
             while (gameState == GameState.WAITING){
@@ -57,6 +58,7 @@ public class Game {
                 panel.setAlignmentX(Component.CENTER_ALIGNMENT);
                 frame.pack();
                 frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                 ArrayList<String> question = getQuestion(level);
@@ -165,7 +167,13 @@ public class Game {
         JPanel panel = new JPanel();
         frame.getContentPane().add(panel);
 
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints(); // create GridBagConstraints object
+        c.gridx = 0; // column 0
+        c.gridy = 0; // row 0
+        c.fill = GridBagConstraints.NONE; // don't fill cell
+        c.anchor = GridBagConstraints.CENTER; // center component horizontally and vertically
+        c.insets = new Insets(10, 10, 2, 2); // add some padding around the component
         JLabel label = new JLabel(question);
         JButton button1 = new JButton(answer1);
 
@@ -195,16 +203,23 @@ public class Game {
             awaiting = false;
 
         });
-        panel.add(label);
-        panel.add(button1);
-        panel.add(button2);
-        panel.add(button3);
-        panel.add(button4);
+        c.insets = new Insets(1, 1, 2, 2); // add some padding around the component
+        panel.add(label, c);
+        c.gridy = 1; // row 0
+        panel.add(button1, c);
+        c.gridy = 2; // row 0
+        panel.add(button2, c);
+        c.gridy = 3; // row 0
+        panel.add(button3, c);
+        c.gridy = 4; // row 0
+        panel.add(button4, c);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 20, frame.getHeight() + 20);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
     }
     public void promptRes(GameState state, String correct){
         JFrame frame = new JFrame();
@@ -238,6 +253,7 @@ public class Game {
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
@@ -278,6 +294,7 @@ public class Game {
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
