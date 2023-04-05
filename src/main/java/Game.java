@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Game {
     private int level;
     private GameState gameState;
+    private GameType gameType;
     volatile boolean awaiting = true;
     String answer;
 
@@ -86,7 +87,12 @@ public class Game {
                     System.out.println("Your level: " + level);
                     System.out.println("Correct! Next question");
                 } else {
-                    gameState = GameState.LOST;
+                    if (gameType != GameType.INFINITE){
+                        gameState = GameState.LOST;
+                    }
+                    else {
+                        level ++;
+                    }
                     System.out.println("Incorrect!");
                     promptRes(gameState, correct);
                 }
@@ -216,6 +222,9 @@ public class Game {
         frame.getContentPane().add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JLabel label = new JLabel("You " + state.toString().toLowerCase() + "!");
+        if (gameType == GameType.INFINITE){
+            label.setText(label.getText() + "\nHowever, you are playing infinite!");
+        }
         JLabel label2 = new JLabel("Correct answer: " + correct);
         JButton button = new JButton("Done");
         button.addActionListener(e -> {
@@ -250,6 +259,7 @@ public class Game {
         });
         button2.addActionListener(e -> {
             frame.dispose();
+            gameType = GameType.INFINITE;
             gameState = GameState.ONGOING;
             awaiting = false;
         });

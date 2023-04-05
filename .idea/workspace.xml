@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Add home screen" />
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Fix bugs w/ home screen">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -223,7 +227,7 @@
       <updated>1680529413384</updated>
       <workItem from="1680529414464" duration="3054000" />
       <workItem from="1680612279673" duration="8085000" />
-      <workItem from="1680643078747" duration="11298000" />
+      <workItem from="1680643078747" duration="11936000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -288,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680714035478</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fix bugs w/ home screen">
+      <created>1680714335663</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680714335663</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +315,7 @@
     <MESSAGE value="Started work on question generation via GUI" />
     <MESSAGE value="Working game" />
     <MESSAGE value="Add home screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add home screen" />
+    <MESSAGE value="Fix bugs w/ home screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bugs w/ home screen" />
   </component>
 </project>
