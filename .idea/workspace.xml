@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Adding way to exit game w/o an error">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Edit todolist.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WW2BAM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WW2BAM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +87,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.scopes",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -227,7 +225,8 @@
       <updated>1680529413384</updated>
       <workItem from="1680529414464" duration="3054000" />
       <workItem from="1680612279673" duration="8085000" />
-      <workItem from="1680643078747" duration="14419000" />
+      <workItem from="1680643078747" duration="14564000" />
+      <workItem from="1680717948487" duration="85000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -327,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680716327506</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Edit todolist.txt">
+      <created>1680717558655</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680717558655</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +354,7 @@
     <MESSAGE value="Fixed correct answers causing game to end (lol)" />
     <MESSAGE value="Won't be using StdDraw" />
     <MESSAGE value="Adding way to exit game w/o an error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding way to exit game w/o an error" />
+    <MESSAGE value="Edit todolist.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit todolist.txt" />
   </component>
 </project>
