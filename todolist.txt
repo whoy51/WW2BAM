@@ -1,6 +1,4 @@
-- GUI
 - Standard Draw interface
-- question randomization
 - money meter
 - leaderboard
-- add character replacement as needed
+- redo character replacement

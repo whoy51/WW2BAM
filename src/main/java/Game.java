@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class Game {
     private int level;
     private GameState gameState;
-    boolean awaiting = true;
+    volatile boolean awaiting = true;
+    String answer;
 
     public Game() throws IOException {
         this.level = 1;
@@ -36,36 +37,49 @@ public class Game {
     private void init() throws IOException {
 
         while (gameState == GameState.ONGOING){
-
+            System.out.println("Fetching questions... (if this takes longer than 5 seconds, restart)");
+            JFrame frame = new JFrame();
+            frame.setTitle("Please wait...");
+            frame.setSize(450, 600);
+            JPanel panel = new JPanel();
+            frame.getContentPane().add(panel);
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            JLabel label = new JLabel("Fetching questions... (if this takes longer than 5 seconds, restart)");
+            panel.add(label);
+            panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            frame.pack();
+            frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
             ArrayList<String> question = getQuestion(level);
-            System.out.println(question.get(0));
-            System.out.println("Answers:");
-            System.out.println(question.get(1));
-            System.out.println(question.get(2));
-            System.out.println(question.get(3));
-            System.out.println(question.get(4));
-
-            awaiting = true;
-            while (awaiting){
-                promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
+            System.out.println(question);
+            String correct = question.get(1);
+            for (int i = 0; i < 100; i++){
+                System.out.println((int) (1 + Math.random() * 3) );
+                question.add((int) Math.floor(Math.random() * 4) + 1,question.remove(1));
             }
+            System.out.println(question);
+            frame.dispose();
+            awaiting = true;
+            promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
 
-
-//            Scanner scan = new Scanner(System.in);
-//            System.out.print("Response: ");
-//            String res = scan.nextLine();
-//            if (res.equals(question.get(1))){
-//                level++;
-//                System.out.println("Your level: " + level);
-//                System.out.println("Correct! Next question");
-//            }else{
-//                gameState = GameState.LOST;
-//                System.out.println("Incorrect!");
-//            }
-//
-//            if (level > 10){
-//                gameState = GameState.WON;
-//            }
+            while (awaiting) {
+                Thread.onSpinWait();
+            }
+            System.out.println(answer);
+            if (answer.equals(correct)){
+                level++;
+                System.out.println("Your level: " + level);
+                System.out.println("Correct! Next question");
+            }else{
+                gameState = GameState.LOST;
+                System.out.println("Incorrect!");
+                promptRes(gameState, correct);
+            }
+            if (level > 10){
+                gameState = GameState.WON;
+                promptRes(gameState, correct);
+            }
 
         }
         System.out.println("Your level: " + level);
@@ -95,13 +109,13 @@ public class Game {
 
         System.out.println(content);
         String plainString = content.toString()
-                .replaceAll("&lt;", "<")
-                .replaceAll("&gt;", ">")
-                .replaceAll("&amp;", "&")
-                .replaceAll("&nbsp;", " ")
-                .replaceAll("&quot;", "\\\"")
-                .replaceAll("&#039;", "'")
-                .replaceAll("&oacute;", "ó");
+                .replaceAll("&lt;", "<");
+//                .replaceAll("&gt;", ">")
+//                .replaceAll("&amp;", "&")
+//                .replaceAll("&nbsp;", " ")
+//                .replaceAll("&quot;", "\\\"")
+//                .replaceAll("&#039;", "'")
+//                .replaceAll("&oacute;", "ó");
         System.out.println(plainString);
 
 
@@ -126,37 +140,70 @@ public class Game {
     public void promptUser(String question, String answer1, String answer2, String answer3, String answer4){
         JFrame frame = new JFrame();
         frame.setTitle("Question " + level);
-        frame.setSize(450, 75);
+        frame.setSize(450, 600);
         JPanel panel = new JPanel();
         frame.getContentPane().add(panel);
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JLabel label = new JLabel(question);
         JButton button1 = new JButton(answer1);
+
         JButton button2 = new JButton(answer2);
         JButton button3 = new JButton(answer3);
         JButton button4 = new JButton(answer4);
         button1.addActionListener(e -> {
             frame.dispose();
+            answer = answer1;
             awaiting = false;
         });
         button2.addActionListener(e -> {
             frame.dispose();
+            answer = answer2;
             awaiting = false;
+
         });
         button3.addActionListener(e -> {
             frame.dispose();
+            answer = answer3;
             awaiting = false;
+
         });
         button4.addActionListener(e -> {
             frame.dispose();
+            answer = answer4;
             awaiting = false;
+
         });
         panel.add(label);
         panel.add(button1);
         panel.add(button2);
         panel.add(button3);
         panel.add(button4);
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        frame.pack();
+        frame.setSize(frame.getWidth() + 20, frame.getHeight() + 20);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    }
+    public void promptRes(GameState state, String correct){
+        JFrame frame = new JFrame();
+        frame.setTitle("Game result");
+        frame.setSize(450, 600);
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JLabel label = new JLabel("You " + state.toString().toLowerCase() + "!");
+        JLabel label2 = new JLabel("Correct answer: " + correct);
+        JButton button = new JButton("Done");
+        button.addActionListener(e -> {
+            frame.dispose();
+        });
+        panel.add(label);
+        panel.add(label2);
+        panel.add(button);
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        frame.pack();
+        frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
