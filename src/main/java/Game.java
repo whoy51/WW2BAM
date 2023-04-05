@@ -36,55 +36,60 @@ public class Game {
 
     private void init() throws IOException {
 
-        while (gameState == GameState.ONGOING){
-            System.out.println("Fetching questions... (if this takes longer than 5 seconds, restart)");
-            JFrame frame = new JFrame();
-            frame.setTitle("Please wait...");
-            frame.setSize(450, 600);
-            JPanel panel = new JPanel();
-            frame.getContentPane().add(panel);
-            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-            JLabel label = new JLabel("Fetching questions... (if this takes longer than 5 seconds, restart)");
-            panel.add(label);
-            panel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            frame.pack();
-            frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-            ArrayList<String> question = getQuestion(level);
-            System.out.println(question);
-            String correct = question.get(1);
-            for (int i = 0; i < 100; i++){
-                System.out.println((int) (1 + Math.random() * 3) );
-                question.add((int) Math.floor(Math.random() * 4) + 1,question.remove(1));
+        while (true) {
+            gameState = GameState.WAITING;
+            while (gameState == GameState.WAITING){
+                promptHome();
             }
-            System.out.println(question);
-            frame.dispose();
-            awaiting = true;
-            promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
+            while (gameState == GameState.ONGOING) {
+                System.out.println("Fetching questions... (if this takes longer than 5 seconds, restart)");
+                JFrame frame = new JFrame();
+                frame.setTitle("Please wait...");
+                frame.setSize(450, 600);
+                JPanel panel = new JPanel();
+                frame.getContentPane().add(panel);
+                panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                JLabel label = new JLabel("Fetching questions... (if this takes longer than 5 seconds, restart)");
+                panel.add(label);
+                panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                frame.pack();
+                frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+                frame.setVisible(true);
+                frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                ArrayList<String> question = getQuestion(level);
+                System.out.println(question);
+                String correct = question.get(1);
+                for (int i = 0; i < 100; i++) {
+                    System.out.println((int) (1 + Math.random() * 3));
+                    question.add((int) Math.floor(Math.random() * 4) + 1, question.remove(1));
+                }
+                System.out.println(question);
+                frame.dispose();
+                awaiting = true;
+                promptUser(question.get(0), question.get(1), question.get(2), question.get(3), question.get(4));
 
-            while (awaiting) {
-                Thread.onSpinWait();
-            }
-            System.out.println(answer);
-            if (answer.equals(correct)){
-                level++;
-                System.out.println("Your level: " + level);
-                System.out.println("Correct! Next question");
-            }else{
-                gameState = GameState.LOST;
-                System.out.println("Incorrect!");
-                promptRes(gameState, correct);
-            }
-            if (level > 10){
-                gameState = GameState.WON;
-                promptRes(gameState, correct);
-            }
+                while (awaiting) {
+                    Thread.onSpinWait();
+                }
+                System.out.println(answer);
+                if (answer.equals(correct)) {
+                    level++;
+                    System.out.println("Your level: " + level);
+                    System.out.println("Correct! Next question");
+                } else {
+                    gameState = GameState.LOST;
+                    System.out.println("Incorrect!");
+                    promptRes(gameState, correct);
+                }
+                if (level > 10) {
+                    gameState = GameState.WON;
+                    promptRes(gameState, correct);
+                }
 
+            }
+            System.out.println("Your level: " + level);
+            System.out.println(gameState.toString());
         }
-        System.out.println("Your level: " + level);
-        System.out.println(gameState.toString());
-
     }
 
     private static JSONObject getJSON(int level) throws IOException {
@@ -201,6 +206,36 @@ public class Game {
         panel.add(label);
         panel.add(label2);
         panel.add(button);
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        frame.pack();
+        frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    }
+
+    public void promptHome(){
+        JFrame frame = new JFrame();
+        frame.setTitle("Home screen");
+        frame.setSize(450, 600);
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JLabel label = new JLabel("Welcome to \"Who Wants to Be a Millionaire\"!");
+        JLabel label2 = new JLabel("Please select a game");
+        JButton button = new JButton("Classic");
+        JButton button2 = new JButton("Infinite");
+        button.addActionListener(e -> {
+            frame.dispose();
+            gameState = GameState.ONGOING;
+        });
+        button2.addActionListener(e -> {
+            frame.dispose();
+            gameState = GameState.ONGOING;
+        });
+        panel.add(label);
+        panel.add(label2);
+        panel.add(button);
+        panel.add(button2);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
