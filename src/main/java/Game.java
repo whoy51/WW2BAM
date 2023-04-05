@@ -37,7 +37,7 @@ public class Game {
 
     /**
      * All game logic
-     * @throws IOException
+     * @throws IOException check getJSON() documentation
      */
     private void init() throws IOException {
 
@@ -86,6 +86,7 @@ public class Game {
                     level++;
                     System.out.println("Your level: " + level);
                     System.out.println("Correct! Next question");
+                    awaiting = false;
                 } else {
                     if (gameType != GameType.INFINITE){
                         gameState = GameState.LOST;
@@ -98,7 +99,8 @@ public class Game {
                 }
                 if (level > 10) {
                     gameState = GameState.WON;
-                    promptRes(gameState, correct);
+                    promptRes(gameState, "");
+                    awaiting = false;
                 }
                 while (awaiting){
                     Thread.onSpinWait();
@@ -221,11 +223,19 @@ public class Game {
         JPanel panel = new JPanel();
         frame.getContentPane().add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        JLabel label = new JLabel("You " + state.toString().toLowerCase() + "!");
-        if (gameType == GameType.INFINITE){
-            label.setText(label.getText() + "\nHowever, you are playing infinite!");
+        JLabel label;
+        JLabel label2;
+        if (!correct.isEmpty()){
+            label = new JLabel("You lost!");
+            if (gameType == GameType.INFINITE){
+                label.setText(label.getText() + "\nHowever, you are playing infinite!");
+            }
+            label2 = new JLabel("Correct answer: " + correct);
+        }else {
+            label = new JLabel("You won!");
+            label2 = new JLabel("Press \"Done\" to start a new game");
         }
-        JLabel label2 = new JLabel("Correct answer: " + correct);
+
         JButton button = new JButton("Done");
         button.addActionListener(e -> {
             awaiting = false;
