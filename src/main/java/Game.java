@@ -34,12 +34,20 @@ public class Game {
         this.level = level;
     }
 
+    /**
+     * All game logic
+     * @throws IOException
+     */
     private void init() throws IOException {
 
         while (true) {
             gameState = GameState.WAITING;
+            awaiting = true;
             while (gameState == GameState.WAITING){
                 promptHome();
+                while (awaiting){
+                    Thread.onSpinWait();
+                }
             }
             while (gameState == GameState.ONGOING) {
                 System.out.println("Fetching questions... (if this takes longer than 5 seconds, restart)");
@@ -72,6 +80,7 @@ public class Game {
                     Thread.onSpinWait();
                 }
                 System.out.println(answer);
+                awaiting = true;
                 if (answer.equals(correct)) {
                     level++;
                     System.out.println("Your level: " + level);
@@ -85,6 +94,9 @@ public class Game {
                     gameState = GameState.WON;
                     promptRes(gameState, correct);
                 }
+                while (awaiting){
+                    Thread.onSpinWait();
+                }
 
             }
             System.out.println("Your level: " + level);
@@ -92,6 +104,12 @@ public class Game {
         }
     }
 
+    /**
+     * Fetch information from OpenTriviaDatabase
+     * @param level Used to determine the difficulty of the question
+     * @return a JSON of the information provided by OpenTB
+     * @throws IOException API is deprecated, or connection was lost
+     */
     private static JSONObject getJSON(int level) throws IOException {
         URL url;
         if (level < 3){
@@ -201,6 +219,7 @@ public class Game {
         JLabel label2 = new JLabel("Correct answer: " + correct);
         JButton button = new JButton("Done");
         button.addActionListener(e -> {
+            awaiting = false;
             frame.dispose();
         });
         panel.add(label);
@@ -227,10 +246,12 @@ public class Game {
         button.addActionListener(e -> {
             frame.dispose();
             gameState = GameState.ONGOING;
+            awaiting = false;
         });
         button2.addActionListener(e -> {
             frame.dispose();
             gameState = GameState.ONGOING;
+            awaiting = false;
         });
         panel.add(label);
         panel.add(label2);
