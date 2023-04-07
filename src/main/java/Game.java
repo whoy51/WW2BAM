@@ -15,18 +15,19 @@ public class Game {
     private boolean gameRunning = true;
     volatile boolean awaiting = true;
     String answer;
-
     private Leaderboard board;
+    Player currentPlayer;
 
     public Game() throws IOException {
         this.level = 1;
         gameState = GameState.ONGOING;
+        board = new Leaderboard();
 
         System.out.println("WW2BAM has been started!");
 
         init();
 
-        board = new Leaderboard();
+
     }
 
     /**
@@ -272,7 +273,11 @@ public class Game {
         JLabel label2 = new JLabel("Please select a game");
         JButton button = new JButton("Classic");
         JButton button2 = new JButton("Infinite");
-        JButton button3 = new JButton("Login");
+        JButton button3 = new JButton("Save Username");
+        JLabel label3 = new JLabel("Current username: " + currentPlayer);
+        if (currentPlayer != null){
+            button3.setText("Change Username");
+        }
         JButton button4 = new JButton("Exit");
         button.addActionListener(e -> {
             frame.dispose();
@@ -288,6 +293,7 @@ public class Game {
         });
         button3.addActionListener(e -> {
             frame.dispose();
+            promptLogin();
         });
         button4.addActionListener(e -> {
             frame.dispose();
@@ -300,6 +306,11 @@ public class Game {
         panel.add(button);
         panel.add(button2);
         panel.add(button3);
+        if (currentPlayer != null){
+            panel.add(label3);
+            System.out.println("test");
+        }
+        panel.add(button4);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
@@ -320,7 +331,25 @@ public class Game {
         JTextArea username = new JTextArea();
         JButton button = new JButton("Login");
         button.addActionListener(e -> {
-
+            frame.dispose();
+            if (board.playerExists(username.getText())){
+                board.addPlayer(new Player(username.getText(), 0, 0, 0));
+                currentPlayer = board.getPlayer(username.getText());
+            }
+            else {
+                currentPlayer = board.getPlayer(username.getText());
+            }
+            promptHome();
         });
+
+        panel.add(label);
+        panel.add(username);
+        panel.add(button);
+        frame.pack();
+        frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        panel.setVisible(true);
     }
 }

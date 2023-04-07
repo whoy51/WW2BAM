@@ -7,6 +7,7 @@ public class Leaderboard {
 
     public Leaderboard(){
         players = new ArrayList<>();
+        System.out.println("test");
     }
 
     public void addPlayer(Player p){
@@ -26,11 +27,20 @@ public class Leaderboard {
 
     public boolean playerExists(String username){
         for (Player p : players){
-            if (p.getUsername().equals(username)){
+            if (p.getUsername().equalsIgnoreCase(username)){
                 return true;
             }
         }
         return false;
+    }
+
+    public Player getPlayer(String s){
+        for (Player p : players){
+            if (p.getUsername().equalsIgnoreCase(s)){
+                return p;
+            }
+        }
+        return null;
     }
 
     // Use merge sort to recursively sort the scores of players
