@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Edit todolist.txt">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Now using GridBagLayout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,30 +70,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2Nv0nM7biJIE6Wep9FXCkRacWGA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/whoy/Projects/Code/WW2BAM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="WW2BAM [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -227,6 +236,12 @@
       <workItem from="1680612279673" duration="8085000" />
       <workItem from="1680643078747" duration="14564000" />
       <workItem from="1680717948487" duration="85000" />
+      <workItem from="1680718037641" duration="4649000" />
+      <workItem from="1680739382519" duration="431000" />
+      <workItem from="1680809795085" duration="23000" />
+      <workItem from="1680809821259" duration="17000" />
+      <workItem from="1680809841828" duration="75000" />
+      <workItem from="1680809918507" duration="685000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -333,7 +348,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680717558655</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add README.md">
+      <created>1680719285086</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680719285086</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update README.md">
+      <created>1680719513400</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680719513400</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Now using GridBagLayout">
+      <created>1680730092163</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680730092163</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,6 +391,9 @@
     <MESSAGE value="Won't be using StdDraw" />
     <MESSAGE value="Adding way to exit game w/o an error" />
     <MESSAGE value="Edit todolist.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit todolist.txt" />
+    <MESSAGE value="Add README.md" />
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="Now using GridBagLayout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now using GridBagLayout" />
   </component>
 </project>

@@ -271,6 +271,7 @@ public class Game {
         JButton button3 = new JButton("Exit");
         button.addActionListener(e -> {
             frame.dispose();
+            gameType = GameType.CLASSIC;
             gameState = GameState.ONGOING;
             awaiting = false;
         });
