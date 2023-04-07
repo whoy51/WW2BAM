@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Now using GridBagLayout">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Fixed never being able to escape infinite mode">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Leaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WW2BAM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WW2BAM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,7 +108,14 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.WW2BAM">
+    <configuration name="WW2BAM" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WW2BAM" />
+      <module name="WW2BAM.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WW2BAM [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -192,35 +204,13 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="WW2BAM [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WW2BAM" />
         <item itemvalue="Gradle.WW2BAM [build]" />
         <item itemvalue="Gradle.WW2BAM [compileJava]" />
         <item itemvalue="Gradle.WW2BAM [check]" />
         <item itemvalue="Gradle.WW2BAM [clean]" />
-        <item itemvalue="Gradle.WW2BAM [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -242,6 +232,10 @@
       <workItem from="1680809821259" duration="17000" />
       <workItem from="1680809841828" duration="75000" />
       <workItem from="1680809918507" duration="685000" />
+      <workItem from="1680833098207" duration="1014000" />
+      <workItem from="1680876509742" duration="1885000" />
+      <workItem from="1680887644137" duration="228000" />
+      <workItem from="1680887960582" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -369,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680730092163</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fixed never being able to escape infinite mode">
+      <created>1680833504988</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680833504988</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +395,11 @@
     <MESSAGE value="Add README.md" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Now using GridBagLayout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now using GridBagLayout" />
+    <MESSAGE value="Fixed never being able to escape infinite mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed never being able to escape infinite mode" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

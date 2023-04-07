@@ -1,4 +1,4 @@
-# Who Wants To Be a Millionare!
+# Who Wants To Be a Millionaire!
 
 A project made for my AP CSA creative project (April 2023)
 

@@ -16,6 +16,8 @@ public class Game {
     volatile boolean awaiting = true;
     String answer;
 
+    private Leaderboard board;
+
     public Game() throws IOException {
         this.level = 1;
         gameState = GameState.ONGOING;
@@ -23,6 +25,8 @@ public class Game {
         System.out.println("WW2BAM has been started!");
 
         init();
+
+        board = new Leaderboard();
     }
 
     /**
@@ -168,12 +172,12 @@ public class Game {
         frame.getContentPane().add(panel);
 
         panel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints(); // create GridBagConstraints object
-        c.gridx = 0; // column 0
-        c.gridy = 0; // row 0
-        c.fill = GridBagConstraints.NONE; // don't fill cell
-        c.anchor = GridBagConstraints.CENTER; // center component horizontally and vertically
-        c.insets = new Insets(10, 10, 2, 2); // add some padding around the component
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
+        c.insets = new Insets(10, 10, 2, 2);
         JLabel label = new JLabel(question);
         JButton button1 = new JButton(answer1);
 
@@ -203,15 +207,15 @@ public class Game {
             awaiting = false;
 
         });
-        c.insets = new Insets(1, 1, 2, 2); // add some padding around the component
+        c.insets = new Insets(1, 1, 2, 2);
         panel.add(label, c);
-        c.gridy = 1; // row 0
+        c.gridy = 1;
         panel.add(button1, c);
-        c.gridy = 2; // row 0
+        c.gridy = 2;
         panel.add(button2, c);
-        c.gridy = 3; // row 0
+        c.gridy = 3;
         panel.add(button3, c);
-        c.gridy = 4; // row 0
+        c.gridy = 4;
         panel.add(button4, c);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
@@ -268,7 +272,8 @@ public class Game {
         JLabel label2 = new JLabel("Please select a game");
         JButton button = new JButton("Classic");
         JButton button2 = new JButton("Infinite");
-        JButton button3 = new JButton("Exit");
+        JButton button3 = new JButton("Login");
+        JButton button4 = new JButton("Exit");
         button.addActionListener(e -> {
             frame.dispose();
             gameType = GameType.CLASSIC;
@@ -282,6 +287,9 @@ public class Game {
             awaiting = false;
         });
         button3.addActionListener(e -> {
+            frame.dispose();
+        });
+        button4.addActionListener(e -> {
             frame.dispose();
             gameState = GameState.ONGOING;
             awaiting = false;
@@ -298,5 +306,21 @@ public class Game {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    }
+
+    public void promptLogin(){
+        JFrame frame = new JFrame();
+        frame.setTitle("Login");
+        frame.setSize(450, 600);
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        JLabel label = new JLabel("Please enter your username!");
+        JTextArea username = new JTextArea();
+        JButton button = new JButton("Login");
+        button.addActionListener(e -> {
+
+        });
     }
 }
