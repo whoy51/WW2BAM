@@ -14,7 +14,7 @@ public class Leaderboard {
         players.add(p);
     }
 
-    public String getLeaderboard(){
+    public String toString(){
         players = sortLeaderboard(players);
         StringBuilder str = new StringBuilder();
         int idx = 0;
@@ -23,6 +23,10 @@ public class Leaderboard {
             str.append("#").append(idx).append(" ").append(p.getUsername()).append(": ").append("$").append(p.getMoney()).append("\n");
         }
         return str.toString();
+    }
+
+    public String getIdx(int i){
+        return "#" + (i + 1) + ": " + players.get(i).getUsername() + " - $" + players.get(i).getMoney();
     }
 
     public boolean playerExists(String username){
@@ -43,6 +47,9 @@ public class Leaderboard {
         return null;
     }
 
+    public int getSize(){
+        return players.size();
+    }
     // Use merge sort to recursively sort the scores of players
     private static ArrayList<Player> merge(ArrayList<Player> a, ArrayList<Player> b){
         ArrayList<Player> m = new ArrayList<>();

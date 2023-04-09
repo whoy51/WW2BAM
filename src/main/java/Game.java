@@ -15,7 +15,7 @@ public class Game {
     private boolean gameRunning = true;
     volatile boolean awaiting = true;
     String answer;
-    private Leaderboard board;
+    private final Leaderboard board;
     Player currentPlayer;
 
     public Game() throws IOException {
@@ -274,11 +274,12 @@ public class Game {
         JButton button = new JButton("Classic");
         JButton button2 = new JButton("Infinite");
         JButton button3 = new JButton("Save Username");
-        JLabel label3 = new JLabel("Current username: " + currentPlayer);
+        JButton button4 = new JButton("Leaderboard");
+        JLabel label3 = new JLabel("Current username: " );
         if (currentPlayer != null){
             button3.setText("Change Username");
         }
-        JButton button4 = new JButton("Exit");
+        JButton button5 = new JButton("Exit");
         button.addActionListener(e -> {
             frame.dispose();
             gameType = GameType.CLASSIC;
@@ -297,6 +298,10 @@ public class Game {
         });
         button4.addActionListener(e -> {
             frame.dispose();
+            promptLeaderboard();
+        });
+        button5.addActionListener(e -> {
+            frame.dispose();
             gameState = GameState.ONGOING;
             awaiting = false;
             gameRunning = false;
@@ -307,10 +312,11 @@ public class Game {
         panel.add(button2);
         panel.add(button3);
         if (currentPlayer != null){
+            label3.setText("Current username: " + currentPlayer);
             panel.add(label3);
-            System.out.println("test");
         }
         panel.add(button4);
+        panel.add(button5);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
@@ -332,9 +338,14 @@ public class Game {
         JButton button = new JButton("Login");
         button.addActionListener(e -> {
             frame.dispose();
-            if (board.playerExists(username.getText())){
-                board.addPlayer(new Player(username.getText(), 0, 0, 0));
-                currentPlayer = board.getPlayer(username.getText());
+            if (!board.playerExists(username.getText())){
+                if (username.getText().contains("12345678")){
+                    board.addPlayer(new HackedPlayer(username.getText(), 0, 0, 0));
+                    currentPlayer = board.getPlayer(username.getText());
+                }else {
+                    board.addPlayer(new Player(username.getText(), 0, 0, 0));
+                    currentPlayer = board.getPlayer(username.getText());
+                }
             }
             else {
                 currentPlayer = board.getPlayer(username.getText());
@@ -345,6 +356,34 @@ public class Game {
         panel.add(label);
         panel.add(username);
         panel.add(button);
+        frame.pack();
+        frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        panel.setVisible(true);
+    }
+
+    public void promptLeaderboard(){
+        JFrame frame = new JFrame();
+        frame.setTitle("Leaderboard");
+        frame.setSize(450, 600);
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        if (board.getSize() == 0){
+            panel.add(new JLabel("No players have been added!"));
+        }
+        for (int i = 0; i < board.getSize(); i++){
+            panel.add(new JLabel(board.getIdx(i)));
+        }
+        JButton button = new JButton("Exit");
+        button.addActionListener(e -> {
+            frame.dispose();
+            promptHome();
+        });
+        panel.add(button);
+
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);
         frame.setLocationRelativeTo(null);
