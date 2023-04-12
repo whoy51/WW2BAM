@@ -1,3 +1,4 @@
 - switch to different db: https://the-trivia-api.com/api/questions?limit=1&difficulty=easy
-- money meter
 - redo character replacement
+- add ability to bail
+- add way to do different leaderboard views
