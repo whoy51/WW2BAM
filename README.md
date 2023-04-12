@@ -5,7 +5,9 @@ A project made for my AP CSA creative project (April 2023)
 ## Credits
 
 Wesley - Code
+
 OpenTDB - Quiz Database
+
 Mr. Jacoby - Suggestions and Help
 
 ## Class Descriptions
