@@ -14,9 +14,10 @@ public class Game {
     private GameType gameType;
     private boolean gameRunning = true;
     volatile boolean awaiting = true;
-    String answer;
+    private String answer;
     private final Leaderboard board;
-    Player currentPlayer;
+    private Player currentPlayer;
+    private int money;
 
     public Game() throws IOException {
         this.level = 1;
@@ -26,7 +27,6 @@ public class Game {
         System.out.println("WW2BAM has been started!");
 
         init();
-
 
     }
 
@@ -83,10 +83,18 @@ public class Game {
                     level++;
                     System.out.println("Your level: " + level);
                     System.out.println("Correct! Next question");
+                    if (currentPlayer != null && gameType != GameType.INFINITE){
+                        currentPlayer.setCorrect(currentPlayer.getCorrect() + 1);
+                        money = incrementMoney();
+                        System.out.println("Current money: " + money);
+                    }
                     awaiting = false;
                 } else {
                     if (gameType != GameType.INFINITE){
                         gameState = GameState.LOST;
+                        if (currentPlayer != null ){
+                            currentPlayer.setIncorrect(currentPlayer.getIncorrect() + 1);
+                        }
                     }
                     else {
                         level ++;
@@ -94,8 +102,11 @@ public class Game {
                     System.out.println("Incorrect!");
                     promptRes(gameState, correct);
                 }
-                if (level > 10) {
+                if (level > 15) {
                     gameState = GameState.WON;
+                    if (currentPlayer != null){
+                        currentPlayer.setMoney((currentPlayer.getMoney() + money));
+                    }
                     promptRes(gameState, "");
                     awaiting = false;
                 }
@@ -273,11 +284,11 @@ public class Game {
         JLabel label2 = new JLabel("Please select a game");
         JButton button = new JButton("Classic");
         JButton button2 = new JButton("Infinite");
-        JButton button3 = new JButton("Save Username");
+        JButton button3 = new JButton("Save Session");
         JButton button4 = new JButton("Leaderboard");
-        JLabel label3 = new JLabel("Current username: " );
+        JLabel label3 = new JLabel("Current session: " );
         if (currentPlayer != null){
-            button3.setText("Change Username");
+            button3.setText("Change Session");
         }
         JButton button5 = new JButton("Exit");
         button.addActionListener(e -> {
@@ -313,8 +324,11 @@ public class Game {
         panel.add(button3);
         if (currentPlayer != null){
             label3.setText("Current username: " + currentPlayer);
-            panel.add(label3);
         }
+        else {
+            label3.setText("Please login to save your session!");
+        }
+        panel.add(label3);
         panel.add(button4);
         panel.add(button5);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -390,5 +404,10 @@ public class Game {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         panel.setVisible(true);
+    }
+
+    public int incrementMoney(){
+        int[] money = new int[]{500, 1_000, 2_000, 3_000, 5_000, 7_000, 10_000, 20_000, 50_000, 100_000, 250_000, 500_000, 1_000_000};
+        return money[level - 2];
     }
 }
