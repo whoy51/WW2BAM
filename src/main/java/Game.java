@@ -87,6 +87,11 @@ public class Game {
                         currentPlayer.setCorrect(currentPlayer.getCorrect() + 1);
                         money = incrementMoney();
                         System.out.println("Current money: " + money);
+                        promptRes(gameState, correct);
+                        awaiting = true;
+                        while (awaiting){
+                            Thread.onSpinWait();
+                        }
                     }
                     awaiting = false;
                 } else {
@@ -128,9 +133,9 @@ public class Game {
      */
     private static JSONObject getJSON(int level) throws IOException {
         URL url;
-        if (level < 3){
+        if (level < 5){
             url = new URL("https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple");
-        }else if (level < 7){
+        }else if (level < 10){
             url = new URL("https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple");
         }else {
             url = new URL("https://opentdb.com/api.php?amount=1&category=9&difficulty=hard&type=multiple");
@@ -246,18 +251,23 @@ public class Game {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JLabel label;
         JLabel label2;
-        if (!correct.isEmpty()){
-            label = new JLabel("You lost!");
-            if (gameType == GameType.INFINITE){
-                label.setText(label.getText() + "\nHowever, you are playing infinite!");
+        if (!correct.isEmpty() && level < 14){
+            if (gameState == GameState.LOST) {
+                label = new JLabel("You lost!");
+                if (gameType == GameType.INFINITE) {
+                    label.setText(label.getText() + "\nHowever, you are playing infinite!");
+                }
+                label2 = new JLabel("Correct answer: " + correct);
+            }else {
+                label = new JLabel("Correct!");
+                label2 = new JLabel("Your current cash: " + money);
             }
-            label2 = new JLabel("Correct answer: " + correct);
         }else {
-            label = new JLabel("You won!");
-            label2 = new JLabel("Press \"Done\" to start a new game");
+            label = new JLabel("You finished!");
+            label2 = new JLabel("Press \"Continue\" to start a new game");
         }
 
-        JButton button = new JButton("Done");
+        JButton button = new JButton("Continue");
         button.addActionListener(e -> {
             awaiting = false;
             frame.dispose();
@@ -265,6 +275,16 @@ public class Game {
         panel.add(label);
         panel.add(label2);
         panel.add(button);
+        if (gameState == GameState.ONGOING && gameType == GameType.CLASSIC && currentPlayer != null){
+            JButton button1 = new JButton("Leave and bank cash");
+            button1.addActionListener(e -> {
+                frame.dispose();
+                gameState = GameState.WON;
+                promptRes(gameState, "");
+                currentPlayer.setMoney(currentPlayer.getMoney() + money);
+            });
+            panel.add(button1);
+        }
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.pack();
         frame.setSize(frame.getWidth() + 100, frame.getHeight() + 20);

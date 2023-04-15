@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Update todolist.txt" />
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Fix README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Leaderboard.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,6 +235,8 @@
       <workItem from="1680887960582" duration="34000" />
       <workItem from="1680887996191" duration="3410000" />
       <workItem from="1681074506797" duration="2705000" />
+      <workItem from="1681308081110" duration="2664000" />
+      <workItem from="1681582803621" duration="1340000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -400,7 +406,28 @@
       <option name="project" value="LOCAL" />
       <updated>1681076479193</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Add money incrementation">
+      <created>1681309369137</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1681309369137</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Edit todolist.txt">
+      <created>1681309586678</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1681309586678</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fix README.md">
+      <created>1681309626993</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1681309626993</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +459,6 @@
     <MESSAGE value="Fixed correct answers causing game to end (lol)" />
     <MESSAGE value="Won't be using StdDraw" />
     <MESSAGE value="Adding way to exit game w/o an error" />
-    <MESSAGE value="Edit todolist.txt" />
     <MESSAGE value="Add README.md" />
     <MESSAGE value="Now using GridBagLayout" />
     <MESSAGE value="Fixed never being able to escape infinite mode" />
@@ -441,7 +467,10 @@
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Added Leaderboard GUI + easter egg" />
     <MESSAGE value="Update todolist.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update todolist.txt" />
+    <MESSAGE value="Add money incrementation" />
+    <MESSAGE value="Edit todolist.txt" />
+    <MESSAGE value="Fix README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix README.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
