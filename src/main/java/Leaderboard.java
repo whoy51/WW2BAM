@@ -26,6 +26,7 @@ public class Leaderboard {
     }
 
     public String getIdx(int i){
+        players = sortLeaderboard(players);
         return "#" + (i + 1) + ": " + players.get(i).getUsername() + " - $" + players.get(i).getMoney();
     }
 
