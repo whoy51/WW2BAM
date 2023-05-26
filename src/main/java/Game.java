@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Game {
-    // Level dictates the quedstion a user is at and the difficulty of the question
+    // Level dictates the question a user is at and the difficulty of the question
     private int level;
     // Check GameState class
     private GameState gameState;
@@ -182,7 +182,9 @@ public class Game {
         ArrayList<String> question = new ArrayList<>();;
         question.add(object.getJSONArray("results").getJSONObject(0).get("question").toString());
         question.add(object.getJSONArray("results").getJSONObject(0).get("correct_answer").toString());
-        question.add(object.getJSONArray("results").getJSONObject(0).getJSONArray("incorrect_answers").get(0).toString());
+        question.add(object.getJSONArray("results").getJSONObject(0
+
+        ).getJSONArray("incorrect_answers").get(0).toString());
         question.add(object.getJSONArray("results").getJSONObject(0).getJSONArray("incorrect_answers").get(1).toString());
         question.add(object.getJSONArray("results").getJSONObject(0).getJSONArray("incorrect_answers").get(2).toString());
         return question;
@@ -387,12 +389,16 @@ public class Game {
         button.addActionListener(e -> {
             frame.dispose();
             if (!board.playerExists(username.getText())){
-                if (username.getText().contains("12345678")){
-                    board.addPlayer(new HackedPlayer(username.getText(), 0, 0, 0));
-                    currentPlayer = board.getPlayer(username.getText());
-                }else {
-                    board.addPlayer(new Player(username.getText(), 0, 0, 0));
-                    currentPlayer = board.getPlayer(username.getText());
+                System.out.println(username.getText().indexOf("12345678"));
+                System.out.println(username.getText().length() - 9);
+                if (username.getText().contains("12345678") && username.getText().indexOf("12345678") == username.getText().length() - 8){
+                    String str = username.getText().replace("12345678", " :)");
+                    board.addPlayer(new HackedPlayer(str, 0, 0, 0));
+                    currentPlayer = board.getPlayer(str);
+                }else if (username.getText().length() != 0){
+                    String str = username.getText().replace(":)", "").replace(" ", "");
+                    board.addPlayer(new Player(str, 0, 0, 0));
+                    currentPlayer = board.getPlayer(str);
                 }
             }
             else {

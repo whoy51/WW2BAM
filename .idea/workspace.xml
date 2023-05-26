@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Added bailing">
+    <list default="true" id="242a7a03-6ee1-4224-9f13-36e9a6cbb4a5" name="Changes" comment="Added comments for peer review">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HackedPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HackedPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Leaderboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WW2BAM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WW2BAM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +238,7 @@
       <workItem from="1681308081110" duration="2664000" />
       <workItem from="1681582803621" duration="3233000" />
       <workItem from="1682705964481" duration="2253000" />
-      <workItem from="1684933259670" duration="6738000" />
+      <workItem from="1684933259670" duration="10264000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1680531708293</created>
@@ -448,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681584310455</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added comments for peer review">
+      <created>1685105601442</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685105601442</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +468,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed some bugs, todolist" />
     <MESSAGE value="edited todolist" />
     <MESSAGE value="Add main class to build.gradle.kts" />
     <MESSAGE value="Add Draw components" />
@@ -491,7 +492,8 @@
     <MESSAGE value="Fix README.md" />
     <MESSAGE value="Fixed leaderboard not sorting" />
     <MESSAGE value="Added bailing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added bailing" />
+    <MESSAGE value="Added comments for peer review" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments for peer review" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
