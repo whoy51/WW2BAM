@@ -1,19 +1,30 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * The leaderboard for the game. Currently not stored in a database (could be a challenge for code swap!)
+ */
 public class Leaderboard {
 
+    // List of all active Players
     private ArrayList<Player> players;
 
     public Leaderboard(){
         players = new ArrayList<>();
-        System.out.println("test");
     }
 
+    /**
+     * Add player to leaderboqrd arraylist
+     * @param p
+     */
     public void addPlayer(Player p){
         players.add(p);
     }
 
+    /**
+     * Get a String list of players
+     * @return a list with data
+     */
     public String toString(){
         players = sortLeaderboard(players);
         StringBuilder str = new StringBuilder();
@@ -25,11 +36,22 @@ public class Leaderboard {
         return str.toString();
     }
 
+    // TODO: Leaderboards for different stats
+    /**
+     * Return information for a player at a certain idx. Used for displaying the leaderboard
+     * @param i index
+     * @return String information
+     */
     public String getIdx(int i){
         players = sortLeaderboard(players);
         return "#" + (i + 1) + ": " + players.get(i).getUsername() + " - $" + players.get(i).getMoney();
     }
 
+    /**
+     * Check if player exists
+     * @param username String username
+     * @return true if exists
+     */
     public boolean playerExists(String username){
         for (Player p : players){
             if (p.getUsername().equalsIgnoreCase(username)){
@@ -39,6 +61,11 @@ public class Leaderboard {
         return false;
     }
 
+    /**
+     * Get a player
+     * @param s String name
+     * @return player object
+     */
     public Player getPlayer(String s){
         for (Player p : players){
             if (p.getUsername().equalsIgnoreCase(s)){
@@ -48,6 +75,10 @@ public class Leaderboard {
         return null;
     }
 
+    /**
+     * Get size of list
+     * @return size
+     */
     public int getSize(){
         return players.size();
     }

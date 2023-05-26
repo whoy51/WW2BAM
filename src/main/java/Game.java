@@ -9,8 +9,11 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Game {
+    // Level dictates the quedstion a user is at and the difficulty of the question
     private int level;
+    // Check GameState class
     private GameState gameState;
+    // Check GameType class
     private GameType gameType;
     private boolean gameRunning = true;
     volatile boolean awaiting = true;
@@ -42,10 +45,12 @@ public class Game {
             awaiting = true;
             while (gameState == GameState.WAITING){
                 promptHome();
+                // Thread.onSpinWait awaits the user's decision to press a button
                 while (awaiting){
                     Thread.onSpinWait();
                 }
             }
+            // if game over, exit game running loop
             if (!gameRunning){
                 System.out.println("Game has ended!");
                 break;
@@ -167,7 +172,10 @@ public class Game {
     }
 
     /**
-     * Get questions as an ArrayList
+     * Get questions from OTDB as an arraylist
+     * @param level used to determine the difficulty
+     * @return question, correct answer, 3 incorrect answers
+     * @throws IOException throws when issue connecting to API
      */
     private static ArrayList<String> getQuestion(int level) throws IOException {
         JSONObject object = getJSON(level);
@@ -181,6 +189,7 @@ public class Game {
 
     }
 
+    // Use JFrame to display questions to user
     public void promptUser(String question, String answer1, String answer2, String answer3, String answer4){
         JFrame frame = new JFrame();
         frame.setTitle("Question " + level);
@@ -201,7 +210,9 @@ public class Game {
         JButton button2 = new JButton(answer2);
         JButton button3 = new JButton(answer3);
         JButton button4 = new JButton(answer4);
+        // Events for button click
         button1.addActionListener(e -> {
+            // Dispose of window
             frame.dispose();
             answer = answer1;
             awaiting = false;
@@ -242,6 +253,7 @@ public class Game {
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
     }
+    // Releases result of game
     public void promptRes(GameState state, String correct){
         JFrame frame = new JFrame();
         frame.setTitle("Game result");
@@ -293,6 +305,7 @@ public class Game {
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
+    // Home screen
     public void promptHome(){
         JFrame frame = new JFrame();
         frame.setTitle("Home screen");
@@ -359,6 +372,7 @@ public class Game {
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
+    // Login screen
     public void promptLogin(){
         JFrame frame = new JFrame();
         frame.setTitle("Login");
@@ -398,6 +412,7 @@ public class Game {
         panel.setVisible(true);
     }
 
+    // Leaderboard screen. See leaderboard class leaderboard data
     public void promptLeaderboard(){
         JFrame frame = new JFrame();
         frame.setTitle("Leaderboard");

@@ -1,4 +1,11 @@
 public class HackedPlayer extends Player{
+    /**
+     * Extension of player w/ some extra properties...
+     * @param username #secretplayer
+     * @param money hacked
+     * @param correct hacked
+     * @param incorrect hacked
+     */
 
 
     public HackedPlayer(String username, int money, int correct, int incorrect) {
